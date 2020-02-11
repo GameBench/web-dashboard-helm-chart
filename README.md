@@ -2,13 +2,13 @@
 
 * Installs the GameBench web dashboard which displays session data recorded using the Android app, desktop app, GBA or SDK.
 
-TL;DR;
+## TL;DR;
 
 ```
 helm install --name gamebench-web-dashboard .
 ```
 
-# Configuration
+## Configuration
 
 | Parameter  | Description | Default |
 | ------------- | ------------- | -- |
