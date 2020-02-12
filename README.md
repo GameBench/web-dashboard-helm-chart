@@ -27,7 +27,10 @@ kubectl apply -f pv.yaml
 # Create namespace
 kubectl create ns <namespace>
 
-helm install --namespace <namespace> gamebench-web-dashboard .
+# Grab chart
+git clone git@github.com:GameBench/web-dashboard-helm-chart.git
+
+helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-chart
 ```
 
 ## Configuration
