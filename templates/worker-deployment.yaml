@@ -1,0 +1,54 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "gamebench.fullname" . }}-worker
+  namespace: {{.Release.Namespace}}
+  labels:
+    app: {{ template "gamebench.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  replicas: {{ .Values.worker.replicas }}
+  selector:
+    matchLabels:
+      app: {{ template "gamebench.name" . }}
+      release: "{{ .Release.Name }}"
+      component: worker
+  template:
+    metadata:
+      labels:
+        app: {{ template "gamebench.name" . }}
+        release: "{{ .Release.Name }}"
+        component: worker
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        checksum/secrets: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+    spec:
+      containers:
+      - envFrom:
+        - configMapRef:
+            name: {{ template "gamebench.fullname" . }}
+        - secretRef:
+            name: {{ template "gamebench.fullname" . }}
+        command: ["node"]
+        args: ["dist/queue-cli.js"]
+        image: "{{ .Values.api.image.repository }}:{{ .Values.image.tag }}"
+        name: worker
+        {{ if .Values.worker.resources }}
+        resources:
+          {{ toYaml .Values.worker.resources | indent 10 }}
+        {{ end }}
+        volumeMounts:
+        - mountPath: /var/gamebench/license
+          name: license-volume
+          readOnly: true
+        - mountPath: /var/gamebench/data
+          name: data-volume
+      volumes:
+      - name: license-volume
+        secret:
+          secretName: {{ template "gamebench.fullname" . }}-license
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: {{ .Values.persistence.existingClaim | default (include "gamebench.fullname" .) }}

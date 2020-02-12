@@ -1,0 +1,7 @@
+Thank you for installing {{ .Chart.Name }}.
+
+Your release is named {{ .Release.Name }}.
+
+Go to {{ .Values.application.urlScheme }}://{{ .Values.application.host }}:{{ .Values.application.port }}/setup to generate an admin signup link.
+
+Password: {{ .Values.setupPassword }}

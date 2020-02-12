@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "gamebench.fullname" . }}-ui
+  namespace: {{.Release.Namespace}}
+  labels:
+    app: {{ template "gamebench.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: {{ template "gamebench.name" . }}
+    release: {{ .Release.Name | quote }}
+    component: ui

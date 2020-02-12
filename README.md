@@ -5,25 +5,52 @@
 ## TL;DR;
 
 ```
-helm install gamebench-web-dashboard .
+# Create a pv
+
+# Example pv.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-pv-gamebench
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    path: /export/data
+    server: 10.154.15.198
+
+kubectl apply -f pv.yaml
+
+# Create namespace
+kubectl create ns <namespace>
+
+helm install --namespace <namespace> gamebench-web-dashboard .
 ```
 
 ## Configuration
 
 | Parameter  | Description | Default |
 | ------------- | ------------- | -- |
+| `api.image.repository` | API image repository  | `quay.io/gamebench/node-backend` |
+| `api.livenessProbe` | API liveness probe  | `{"httpGet":{"path":"/v1/health","port":5000},"initialDelaySeconds":60,"periodSeconds":30}` |
+| `api.resources` | CPU/Memory resource requests/limits  | `{}` |
 | `apiTokenSecret` | Key used to hash API tokens  | `""` |
-| `backend.image.repository` | Backend image repository  | `quay.io/gamebench/node-backend` |
-| `backend.resources` | CPU/Memory resource requests/limits  | `{}` |
+| `application.host` | Application host. Used to construct URLs to the application  | `""` |
+| `application.port` | Application port. Used to construct URLs to the application  | `""` |
+| `application.urlScheme` | Application URL scheme. Used to construct URLs to the application  | `"https"` |
 | `elasticsearch.host` | Elasticsearch host | `""` |
 | `elasticsearch.pass` | Elasticsearch password | `""` |
 | `elasticsearch.port` | Elasticsearch port | `""` |
 | `elasticsearch.ssl` | Elasticsearch ssl | `""` |
 | `elasticsearch.user` | Elasticsearch user | `""` |
 | `encryptionKey` | Key used to hash Jira passwords / tokens  | `""` |
-| `frontend.image.repository` | Frontend image repository  | `quay.io/gamebench/ang4-frontend` |
-| `frontend.resources` | CPU/Memory resource requests/limits  | `{}` |
 | `image.tag` | Image tag | `v1.17.0` |
+| `ingress.annotations` | | `{}` |
+| `ingress.enabled` | | `false` |
+| `ingress.hosts` | Array of hosts | `[]` |
 | `license.contents` | `gamebench-license` from the license zip as a string with double quotes escaped  | `""` |
 | `license.signature` | `gamebench-license.RSA-SHA256` from the license zip base64 encoded  | `""` |
 | `logLevel` |  | `info` |
@@ -35,9 +62,23 @@ helm install gamebench-web-dashboard .
 | `redis.auth` | Redis auth | `""` |
 | `redis.host` | Redis host | `""` |
 | `redis.port` | Redis port | `"6379"` |
+| `setupPassword` | `/setup` password | `""` |
 | `smtp.from` | SMTP from | `""` |
 | `smtp.host` | SMTP host | `""` |
 | `smtp.pass` | SMTP pass | `""` |
 | `smtp.port` | SMTP port | `""` |
-| `smtp.tls` | SMTP TLS | `""` |
+| `smtp.tls` | SMTP TLS | `"false"` |
 | `smtp.user` | SMTP user | `""` |
+| `ui.image.repository` | Frontend image repository  | `quay.io/gamebench/ang4-frontend` |
+| `ui.resources` | CPU/Memory resource requests/limits  | `{}` |
+| `worker.resources` | CPU/Memory resource requests/limits  | `{}` |
+
+## Troubleshooting
+
+### Nginx ingress and 418 responses
+
+If you encounter 418 errors from nginx when uploading sessions, add this annotation to your ingress annotations:
+
+```
+nginx.ingress.kubernetes.io/proxy-body-size: 4096m
+```

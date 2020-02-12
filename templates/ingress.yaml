@@ -1,0 +1,43 @@
+{{- if .Values.ingress.enabled -}}
+{{- $fullName := include "gamebench.fullname" . }}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "gamebench.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "gamebench.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+{{- if .Values.ingress.labels }}
+{{ toYaml .Values.ingress.labels | indent 4 }}
+{{- end }}
+{{- with .Values.ingress.annotations }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+{{- if .Values.ingress.tls }}
+  tls:
+{{ toYaml .Values.ingress.tls | indent 4 }}
+{{- end }}
+  rules:
+  {{- range .Values.ingress.hosts }}
+    - host: {{ . }}
+      http:
+        paths:
+          - backend:
+              serviceName: {{ $fullName }}-ui
+              servicePort: 80
+            path: /
+          - backend:
+              serviceName: {{ $fullName }}-api
+              servicePort: 5000
+            path: /v1
+          - backend:
+              serviceName: {{ $fullName }}-api
+              servicePort: 5000
+            path: /socket.io
+  {{- end -}}
+{{- end }}

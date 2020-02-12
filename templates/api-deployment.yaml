@@ -1,0 +1,59 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "gamebench.fullname" . }}-api
+  namespace: {{.Release.Namespace}}
+  labels:
+    app: {{ template "gamebench.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  replicas: {{.Values.api.replicas}}
+  selector:
+    matchLabels:
+      app: {{ template "gamebench.name" . }}
+      release: "{{ .Release.Name }}"
+      component: api
+  template:
+    metadata:
+      labels:
+        app: {{ template "gamebench.name" . }}
+        release: "{{ .Release.Name }}"
+        component: api
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        checksum/secrets: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+    spec:
+      containers:
+      - envFrom:
+        - configMapRef:
+            name: {{ template "gamebench.fullname" . }}
+        - secretRef:
+            name: {{ template "gamebench.fullname" . }}
+        image: "{{ .Values.api.image.repository }}:{{ .Values.image.tag }}"
+        name: api
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        {{ if .Values.api.livenessProbe }}
+        livenessProbe:
+{{ toYaml .Values.api.livenessProbe | indent 12 }}
+        {{ end }}
+        {{ if .Values.api.resources }}
+        resources:
+{{ toYaml .Values.api.resources | indent 12 }}
+        {{ end }}
+        volumeMounts:
+        - mountPath: /var/gamebench/license
+          name: license-volume
+          readOnly: true
+        - mountPath: /var/gamebench/data
+          name: data-volume
+      volumes:
+      - name: license-volume
+        secret:
+          secretName: {{ template "gamebench.fullname" . }}-license
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: {{ .Values.persistence.existingClaim | default (include "gamebench.fullname" .) }}

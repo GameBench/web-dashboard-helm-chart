@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ template "gamebench.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+  name: {{ template "gamebench.fullname" . }}-ui
+  namespace: {{.Release.Namespace}}
+spec:
+  replicas: {{.Values.ui.replicas}}
+  selector:
+    matchLabels:
+      app: {{ template "gamebench.name" . }}
+      release: "{{ .Release.Name }}"
+      component: ui
+  template:
+    metadata:
+      labels:
+        app: {{ template "gamebench.name" . }}
+        release: "{{ .Release.Name }}"
+        component: ui
+    spec:
+      containers:
+      - env:
+        - name: PRODUCTION_READY
+          value: "true"
+        - name: BACKEND_HOST
+          value: {{.Values.application.host}}
+        - name: BACKEND_PORT
+          value: "{{.Values.application.port}}"
+        - name: BACKEND_SSL
+          value: {{ if eq .Values.application.urlScheme "https" }}"true"{{ else }}"false"{{ end }}
+        image: "{{.Values.ui.image.repository}}:{{.Values.image.tag}}"
+        name: nginx
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        {{ if .Values.ui.resources }}
+        resources:
+          {{ toYaml .Values.ui.resources | indent 10 }}
+        {{ end }}

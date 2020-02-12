@@ -1,0 +1,78 @@
+api:
+  image:
+    repository: quay.io/gamebench/node-backend
+  livenessProbe:
+    httpGet:
+      path: /v1/health
+      port: 5000
+    initialDelaySeconds: 60
+    periodSeconds: 30
+  replicas: 1
+  resources: {}
+  #  requests:
+  #    memory: 1Gi
+  #    cpu: 1
+  #  limits:
+  #    memory: 1Gi
+
+apiTokenSecret: ""
+application:
+  host:
+  port:
+  urlScheme: "https"
+encryptionKey: ""
+elasticsearch:
+  host:
+  pass: ""
+  port:
+  ssl:
+  user: ""
+image:
+  tag: v1.17.0
+ingress:
+  enabled: false
+  hosts: []
+license:
+  contents: ""
+  signature: ""
+logLevel:
+persistence:
+  existingClaim: ""
+  size: "10Gi"
+postgres:
+  database: gamebench
+  host: ""
+  password: ""
+  port: "5432"
+  username: ""
+redis:
+  auth: ""
+  host: ""
+  port: "6379"
+setupPassword: ""
+smtp:
+  from: ""
+  host: ""
+  user: ""
+  pass: ""
+  port: ""
+  tls: ""
+ui:
+  image:
+    repository: quay.io/gamebench/ang4-frontend
+  replicas: 1
+  resources: {}
+  #  requests:
+  #    memory: 512Mi
+  #    cpu: 250m
+  #  limits:
+  #    memory: 512Mi
+
+worker:
+  replicas: 1
+  resources: {}
+  #  requests:
+  #    memory: 1Gi
+  #    cpu: 1
+  #  limits:
+  #    memory: 1Gi
