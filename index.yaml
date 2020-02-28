@@ -1,0 +1,11 @@
+apiVersion: v1
+entries:
+  gamebench:
+  - apiVersion: v1
+    created: "2020-02-28T20:45:37.7020646Z"
+    digest: 057536f04bb8cb28058b86ed19054ef4d60877c7a0514f148b0254bafba19fc0
+    name: gamebench
+    urls:
+    - gamebench-0.1.tgz
+    version: "0.1"
+generated: "2020-02-28T20:45:37.6967677Z"
