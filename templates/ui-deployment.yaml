@@ -22,6 +22,12 @@ spec:
         release: "{{ .Release.Name }}"
         component: ui
     spec:
+      {{- if .Values.ui.image.pullSecrets }}
+      imagePullSecrets:
+      {{- range $sec := .Values.ui.image.pullSecrets }}
+        - name: {{$sec | quote }}
+      {{- end }}
+      {{- end }}
       containers:
       - env:
         - name: PRODUCTION_READY
