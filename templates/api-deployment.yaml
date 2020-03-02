@@ -25,6 +25,12 @@ spec:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
         checksum/secrets: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
     spec:
+      {{- if .Values.api.image.pullSecrets }}
+      imagePullSecrets:
+      {{- range $sec := .Values.api.image.pullSecrets }}
+        - name: {{$sec | quote }}
+      {{- end }}
+      {{- end }}
       containers:
       - envFrom:
         - configMapRef:
