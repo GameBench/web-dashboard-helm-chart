@@ -1,6 +1,7 @@
 api:
   image:
     repository: quay.io/gamebench/node-backend
+    pullSecrets: []
   livenessProbe:
     httpGet:
       path: /v1/health
@@ -39,6 +40,7 @@ logLevel:
 persistence:
   existingClaim: ""
   size: "10Gi"
+  storageClassName: ""
 postgres:
   database: gamebench
   host: ""
@@ -60,6 +62,7 @@ smtp:
 ui:
   image:
     repository: quay.io/gamebench/ang4-frontend
+    pullSecrets: []
   replicas: 1
   resources: {}
   #  requests:
