@@ -58,6 +58,7 @@ helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-
 | `license.contents` | `gamebench-license` from the license zip as a string with double quotes escaped  | `""` |
 | `license.signature` | `gamebench-license.RSA-SHA256` from the license zip base64 encoded  | `""` |
 | `logLevel` |  | `info` |
+| `persistence.storageClass` | `Persistent Disk Storage Class ` | `""` | 
 | `postgres.database` | Postgres database | `"gamebench"` |
 | `postgres.host` | Postgres host | `""` |
 | `postgres.password` | Postgres password | `""` |
