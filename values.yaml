@@ -8,6 +8,12 @@ api:
       port: 5000
     initialDelaySeconds: 60
     periodSeconds: 30
+  readinessProbe:
+    httpGet:
+      path: /v1/info/version
+      port: 5000
+    initialDelaySeconds: 60
+    periodSeconds: 30
   replicas: 1
   resources: {}
   #  requests:

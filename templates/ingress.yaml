@@ -28,16 +28,16 @@ spec:
       http:
         paths:
           - backend:
+              serviceName: {{ $fullName }}-api
+              servicePort: 5000
+            path: /v1/*
+          - backend:
+              serviceName: {{ $fullName }}-api
+              servicePort: 5000
+            path: /socket.io/*
+          - backend:
               serviceName: {{ $fullName }}-ui
               servicePort: 80
-            path: /
-          - backend:
-              serviceName: {{ $fullName }}-api
-              servicePort: 5000
-            path: /v1
-          - backend:
-              serviceName: {{ $fullName }}-api
-              servicePort: 5000
-            path: /socket.io
+            path: /*
   {{- end -}}
 {{- end }}
