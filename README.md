@@ -40,6 +40,7 @@ helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-
 | `api.image.repository` | API image repository  | `quay.io/gamebench/node-backend` |
 | `api.image.pullSecrets` | Array of kubernetes pull secret names | `[]` |
 | `api.livenessProbe` | API liveness probe  | `{"httpGet":{"path":"/v1/health","port":5000},"initialDelaySeconds":60,"periodSeconds":30}` |
+| `api.readinessProbe` | API readiness probe  | `{"httpGet":{"path":"/v1/info/version","port":5000},"initialDelaySeconds":60,"periodSeconds":30}` |
 | `api.resources` | CPU/Memory resource requests/limits  | `{}` |
 | `api.service.type` | API Service Type | `"ClusterIP"` | 
 | `apiTokenSecret` | Key used to hash API tokens  | `""` |
