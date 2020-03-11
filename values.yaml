@@ -27,7 +27,7 @@ api:
 apiTokenSecret: ""
 application:
   host:
-  port:
+  port: "443"
   urlScheme: "https"
 encryptionKey: ""
 elasticsearch:

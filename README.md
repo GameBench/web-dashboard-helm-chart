@@ -45,7 +45,7 @@ helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-
 | `api.service.type` | API Service Type | `"ClusterIP"` | 
 | `apiTokenSecret` | Key used to hash API tokens  | `""` |
 | `application.host` | Application host. Used to construct URLs to the application  | `""` |
-| `application.port` | Application port. Used to construct URLs to the application  | `""` |
+| `application.port` | Application port. Used to construct URLs to the application  | `"443"` |
 | `application.urlScheme` | Application URL scheme. Used to construct URLs to the application  | `"https"` |
 | `elasticsearch.host` | Elasticsearch host | `""` |
 | `elasticsearch.pass` | Elasticsearch password | `""` |
