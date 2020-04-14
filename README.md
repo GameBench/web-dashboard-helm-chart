@@ -57,7 +57,7 @@ helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-
 | `ingress.annotations` | | `{}` |
 | `ingress.enabled` | | `false` |
 | `ingress.hosts` | Array of hosts | `[]` |
-| `license.contents` | `gamebench-license` from the license zip as a string with double quotes escaped  | `""` |
+| `license.contents` | `gamebench-license` from the license zip base64 encoded | `""` |
 | `license.signature` | `gamebench-license.RSA-SHA256` from the license zip base64 encoded  | `""` |
 | `logLevel` |  | `info` |
 | `persistence.storageClass` | `Persistent Disk Storage Class ` | `""` | 
