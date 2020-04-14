@@ -53,7 +53,7 @@ helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-
 | `elasticsearch.ssl` | Elasticsearch ssl | `""` |
 | `elasticsearch.user` | Elasticsearch user | `""` |
 | `encryptionKey` | Key used to hash Jira passwords / tokens  | `""` |
-| `image.tag` | Image tag | `v1.19.0` |
+| `image.tag` | Image tag | `v1.20.0` |
 | `ingress.annotations` | | `{}` |
 | `ingress.enabled` | | `false` |
 | `ingress.hosts` | Array of hosts | `[]` |
