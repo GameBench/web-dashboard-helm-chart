@@ -37,7 +37,7 @@ elasticsearch:
   ssl:
   user: ""
 image:
-  tag: v1.21.1
+  tag: v1.21.2
 ingress:
   enabled: false
   hosts: []
