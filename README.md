@@ -69,7 +69,7 @@ helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-
 | `logLevel` |  | `info` |
 | `persistence.enabled` | Set to `false` if you do not wish to use a PVC. Can be used in conjuction with `fileStorage.type` `gcs` | `true` |
 | `persistence.existingClaim` | Name of existing PVC. If left empty and `persistence.enabled` is `true`, a PVC will be created | `""` |
-| `persistence.storageClass` | `Persistent Disk Storage Class ` | `""` | 
+| `persistence.storageClass` | Persistent Disk Storage Class | `""` |
 | `postgres.database` | Postgres database | `"gamebench"` |
 | `postgres.host` | Postgres host | `""` |
 | `postgres.password` | Postgres password | `""` |
