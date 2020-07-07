@@ -7,9 +7,19 @@ data:
   ES_PORT: "{{.Values.elasticsearch.port}}"
   ES_SSL: "{{.Values.elasticsearch.ssl}}"
   FILE_STORAGE_DISK_BASE_PATH: /var/gamebench/data/storage
+  {{ if eq .Values.fileStorage.type "gcs" }}
+  FILE_STORAGE_CACHE_TYPE: {{.Values.fileStorage.cacheType}}
+  FILE_STORAGE_GCS_BUCKET: {{.Values.fileStorage.gcsBucket}}
+  FILE_STORAGE_GCS_PATH_PREFIX: "{{.Values.fileStorage.gcsPathPrefix}}"
+  FILE_STORAGE_GCS_PROJECT_ID: {{.Values.fileStorage.gcsProjectId}}
+  {{ end }}
+  FILE_STORAGE_TYPE: {{.Values.fileStorage.type }}
   FRONTEND_URL: {{ printf "%s://%s:%s" .Values.application.urlScheme .Values.application.host .Values.application.port }}
   GB_BASE_PATH: /var/gamebench/data
   GB_LICENSE_PATH: /var/gamebench/license
+  {{ if .Values.googleApplicationCredentials }}
+  GOOGLE_APPLICATION_CREDENTIALS: /var/secrets/google/key.json
+  {{ end }}
   {{ if .Values.logLevel }}
   LOG_LEVEL: "{{.Values.logLevel}}"
   {{ end }}

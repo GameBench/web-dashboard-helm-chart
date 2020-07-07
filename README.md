@@ -41,6 +41,7 @@ helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-
 | `api.image.pullSecrets` | Array of kubernetes pull secret names | `[]` |
 | `api.livenessProbe` | API liveness probe  | `{"httpGet":{"path":"/v1/health","port":5000},"initialDelaySeconds":60,"periodSeconds":30}` |
 | `api.readinessProbe` | API readiness probe  | `{"httpGet":{"path":"/v1/info/version","port":5000},"initialDelaySeconds":60,"periodSeconds":30}` |
+| `api.replicas` | | `1` |
 | `api.resources` | CPU/Memory resource requests/limits  | `{}` |
 | `api.service.type` | API Service Type | `"ClusterIP"` | 
 | `apiTokenSecret` | Key used to hash API tokens  | `""` |
@@ -53,6 +54,12 @@ helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-
 | `elasticsearch.ssl` | Elasticsearch ssl | `""` |
 | `elasticsearch.user` | Elasticsearch user | `""` |
 | `encryptionKey` | Key used to hash Jira passwords / tokens  | `""` |
+| `fileStorage.cacheType` | Can be `disk` or `redis`. Set to `redis` in order to share the cache between multiple API replicas  | `"disk"` |
+| `fileStorage.type` | Can be `disk` or `gcs` | `"disk"` |
+| `fileStorage.gcsBucket` | Google Cloud Storage bucket used for file storage | `""` |
+| `fileStorage.gcsPathPrefix` | Path prefix for uploaded objects. Useful if the bucket contains other objects not uploaded by the system | `""` |
+| `fileStorage.gcsProjectId` | Project ID for `fileStorage.gcsBucket` | `""` |
+| `googleApplicationCredentials` | Base64 encoded JSON service account key | `""` |
 | `image.tag` | Image tag | `v1.22.0` |
 | `ingress.annotations` | | `{}` |
 | `ingress.enabled` | | `false` |
@@ -60,6 +67,8 @@ helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-
 | `license.contents` | `gamebench-license` from the license zip base64 encoded | `""` |
 | `license.signature` | `gamebench-license.RSA-SHA256` from the license zip base64 encoded  | `""` |
 | `logLevel` |  | `info` |
+| `persistence.enabled` | Set to `false` if you do not wish to use a PVC. Can be used in conjuction with `fileStorage.type` `gcs` | `true` |
+| `persistence.existingClaim` | Name of existing PVC. If left empty and `persistence.enabled` is `true`, a PVC will be created | `""` |
 | `persistence.storageClass` | `Persistent Disk Storage Class ` | `""` | 
 | `postgres.database` | Postgres database | `"gamebench"` |
 | `postgres.host` | Postgres host | `""` |

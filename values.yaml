@@ -36,6 +36,13 @@ elasticsearch:
   port:
   ssl:
   user: ""
+fileStorage:
+  cacheType: "disk"
+  gcsBucket: ""
+  gcsPathPrefix: ""
+  gcsProjectId: ""
+  type: "disk"
+googleApplicationCredentials: ""
 image:
   tag: v1.22.0
 ingress:
@@ -46,6 +53,7 @@ license:
   signature: ""
 logLevel:
 persistence:
+  enabled: true
   existingClaim: ""
   size: "10Gi"
   storageClassName: ""

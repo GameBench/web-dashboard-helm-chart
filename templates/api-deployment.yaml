@@ -60,10 +60,25 @@ spec:
           readOnly: true
         - mountPath: /var/gamebench/data
           name: data-volume
+        {{ if .Values.googleApplicationCredentials }}
+        - mountPath: /var/secrets/google
+          name: google-application-credentials-volume
+          readOnly: true
+        {{ end }}
       volumes:
       - name: license-volume
         secret:
           secretName: {{ template "gamebench.fullname" . }}-license
+      {{ if .Values.persistence.enabled }}
       - name: data-volume
         persistentVolumeClaim:
           claimName: {{ .Values.persistence.existingClaim | default (include "gamebench.fullname" .) }}
+      {{ else }}
+      - name: data-volume
+        emptyDir: {}
+      {{ end }}
+      {{ if .Values.googleApplicationCredentials }}
+      - name: google-application-credentials-volume
+        secret:
+          secretName: {{ template "gamebench.fullname" . }}-google-application-credentials-secret
+      {{ end }}
