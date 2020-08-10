@@ -87,8 +87,10 @@ helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-
 | `smtp.user` | SMTP user | `""` |
 | `ui.image.repository` | Frontend image repository  | `quay.io/gamebench/ang4-frontend` |
 | `ui.image.pullSecrets` | Array of kubernetes pull secret names | `[]` |
+| `ui.replicas` | | `1` |
 | `ui.resources` | CPU/Memory resource requests/limits  | `{}` |
 | `ui.service.type` | UI Service Type | `"ClusterIP"` |
+| `worker.replicas` | | `1` |
 | `worker.resources` | CPU/Memory resource requests/limits  | `{}` |
 
 ## Troubleshooting
