@@ -31,6 +31,7 @@ data:
   POSTGRES_DATABASE: "{{.Values.postgres.database}}"
   POSTGRES_HOST: "{{.Values.postgres.host}}"
   POSTGRES_PORT: "{{.Values.postgres.port}}"
+  PRIMARY_DATA_STORE: "{{.Values.application.primaryDataStore}}"
   REDIS_HOST: "{{.Values.redis.host}}"
   REDIS_PORT: "{{.Values.redis.port}}"
 kind: ConfigMap

@@ -28,6 +28,7 @@ apiTokenSecret: ""
 application:
   host:
   port: "443"
+  primaryDataStore: "es"
   urlScheme: "https"
 encryptionKey: ""
 elasticsearch:
