@@ -95,9 +95,9 @@ helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-
 
 ## Troubleshooting
 
-### Nginx ingress and 418 responses
+### Nginx ingress and 413 responses
 
-If you're using the Nginx ingress controller and encounter 418 errors from Nginx when uploading sessions, add this annotation to your ingress annotations:
+If you're using the Nginx ingress controller and encounter 413 errors from Nginx when uploading sessions, add this annotation to your ingress annotations:
 
 ```
 nginx.ingress.kubernetes.io/proxy-body-size: 4096m
