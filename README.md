@@ -5,7 +5,7 @@
 ## TL;DR;
 
 ```
-# Create a pv
+# Create a pv (only required if you wish to use disk file storage.)
 
 # Example pv.yaml
 apiVersion: v1
@@ -27,7 +27,13 @@ kubectl apply -f pv.yaml
 # Create namespace
 kubectl create ns <namespace>
 
-# Grab chart
+# Install from Helm
+
+helm repo add gb-helm-charts https://gb-helm-charts.storage.googleapis.com/
+helm install gb-helm-charts/gamebench
+
+# Or clone the repo and install the chart
+
 git clone git@github.com:GameBench/web-dashboard-helm-chart.git
 
 helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-chart
