@@ -54,11 +54,11 @@ helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-
 | `application.port` | Application port. Used to construct URLs to the application  | `"443"` |
 | `application.primaryDataStore` | Can be `es` or `postgres` | `"es"` |
 | `application.urlScheme` | Application URL scheme. Used to construct URLs to the application  | `"https"` |
-| `elasticsearch.host` | Elasticsearch host | `""` |
-| `elasticsearch.pass` | Elasticsearch password | `""` |
-| `elasticsearch.port` | Elasticsearch port | `""` |
-| `elasticsearch.ssl` | Elasticsearch ssl | `""` |
-| `elasticsearch.user` | Elasticsearch user | `""` |
+| `elasticsearch.host` | Elasticsearch host. Not required if `application.primaryDataStore` is `postgres` | `""` |
+| `elasticsearch.pass` | Elasticsearch password. Not required if `application.primaryDataStore` is `postgres` | `""` |
+| `elasticsearch.port` | Elasticsearch port. Not required if `application.primaryDataStore` is `postgres` | `""` |
+| `elasticsearch.ssl` | Elasticsearch ssl. Not required if `application.primaryDataStore` is `postgres` | `""` |
+| `elasticsearch.user` | Elasticsearch user. Not required if `application.primaryDataStore` is `postgres` | `""` |
 | `encryptionKey` | Key used to hash Jira passwords / tokens  | `""` |
 | `fileStorage.cacheType` | Can be `disk` or `redis`. Set to `redis` in order to share the cache between multiple API replicas  | `"disk"` |
 | `fileStorage.type` | Can be `disk` or `gcs` | `"disk"` |
