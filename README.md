@@ -54,11 +54,6 @@ helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-
 | `application.port` | Application port. Used to construct URLs to the application  | `"443"` |
 | `application.primaryDataStore` | Can be `es` or `postgres` | `"es"` |
 | `application.urlScheme` | Application URL scheme. Used to construct URLs to the application  | `"https"` |
-| `elasticsearch.host` | Elasticsearch host. Not required if `application.primaryDataStore` is `postgres` | `""` |
-| `elasticsearch.pass` | Elasticsearch password. Not required if `application.primaryDataStore` is `postgres` | `""` |
-| `elasticsearch.port` | Elasticsearch port. Not required if `application.primaryDataStore` is `postgres` | `""` |
-| `elasticsearch.ssl` | Elasticsearch ssl. Not required if `application.primaryDataStore` is `postgres` | `""` |
-| `elasticsearch.user` | Elasticsearch user. Not required if `application.primaryDataStore` is `postgres` | `""` |
 | `encryptionKey` | Key used to hash Jira passwords / tokens  | `""` |
 | `fileStorage.cacheType` | Can be `disk` or `redis`. Set to `redis` in order to share the cache between multiple API replicas  | `"disk"` |
 | `fileStorage.type` | Can be `disk` or `gcs` | `"disk"` |
@@ -66,7 +61,7 @@ helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-
 | `fileStorage.gcsPathPrefix` | Path prefix for uploaded objects. Useful if the bucket contains other objects not uploaded by the system | `""` |
 | `fileStorage.gcsProjectId` | Project ID for `fileStorage.gcsBucket` | `""` |
 | `googleApplicationCredentials` | Base64 encoded JSON service account key | `""` |
-| `image.tag` | Image tag | `v1.28.0` |
+| `image.tag` | Image tag | `v2.0.0` |
 | `ingress.annotations` | | `{}` |
 | `ingress.enabled` | | `false` |
 | `ingress.hosts` | Array of hosts | `[]` |

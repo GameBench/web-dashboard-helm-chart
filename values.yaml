@@ -31,12 +31,6 @@ application:
   primaryDataStore: "es"
   urlScheme: "https"
 encryptionKey: ""
-elasticsearch:
-  host:
-  pass: ""
-  port:
-  ssl:
-  user: ""
 fileStorage:
   cacheType: "disk"
   gcsBucket: ""
@@ -45,7 +39,7 @@ fileStorage:
   type: "disk"
 googleApplicationCredentials: ""
 image:
-  tag: v1.28.0
+  tag: v2.0.0
 ingress:
   enabled: false
   hosts: []

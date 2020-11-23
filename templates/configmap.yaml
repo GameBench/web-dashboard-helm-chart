@@ -3,9 +3,6 @@ data:
   ALLOW_FREE_USER_SIGNUP: "false"
   BACKEND_URL: {{ printf "%s://%s:%s" .Values.application.urlScheme .Values.application.host .Values.application.port }}
   DEFAULT_SUBTYPE: company
-  ES_HOST: "{{.Values.elasticsearch.host}}"
-  ES_PORT: "{{.Values.elasticsearch.port}}"
-  ES_SSL: "{{.Values.elasticsearch.ssl}}"
   FILE_STORAGE_DISK_BASE_PATH: /var/gamebench/data/storage
   {{ if eq .Values.fileStorage.type "gcs" }}
   FILE_STORAGE_CACHE_TYPE: {{.Values.fileStorage.cacheType}}
