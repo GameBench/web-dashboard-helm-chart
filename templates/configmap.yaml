@@ -2,6 +2,9 @@ apiVersion: v1
 data:
   ALLOW_FREE_USER_SIGNUP: "false"
   BACKEND_URL: {{ printf "%s://%s:%s" .Values.application.urlScheme .Values.application.host .Values.application.port }}
+  {{ if .Values.application.dbLogLevel }}
+  DB_LOG_LEVEL: "{{.Values.application.dbLogLevel}}"
+  {{ end }}
   DEFAULT_SUBTYPE: company
   FILE_STORAGE_DISK_BASE_PATH: /var/gamebench/data/storage
   {{ if eq .Values.fileStorage.type "gcs" }}
@@ -16,6 +19,9 @@ data:
   GB_LICENSE_PATH: /var/gamebench/license
   {{ if .Values.googleApplicationCredentials }}
   GOOGLE_APPLICATION_CREDENTIALS: /var/secrets/google/key.json
+  {{ end }}
+  {{ if .Values.application.logFormat }}
+  LOG_FORMAT: "{{.Values.application.logFormat}}"
   {{ end }}
   {{ if .Values.logLevel }}
   LOG_LEVEL: "{{.Values.logLevel}}"
