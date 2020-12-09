@@ -43,7 +43,7 @@ spec:
         name: worker
         {{ if .Values.worker.resources }}
         resources:
-          {{ toYaml .Values.worker.resources | indent 10 }}
+{{ toYaml .Values.worker.resources | indent 12 }}
         {{ end }}
         volumeMounts:
         - mountPath: /var/gamebench/license
