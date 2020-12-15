@@ -38,6 +38,13 @@ git clone git@github.com:GameBench/web-dashboard-helm-chart.git
 helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-chart
 ```
 
+## Upgrading
+
+### v0.17 to v0.18
+
+`application.authJwtSecret` must be specified otherwise the API pods will error.
+
+
 ## Configuration
 
 | Parameter  | Description | Default |
@@ -50,6 +57,7 @@ helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-
 | `api.resources` | CPU/Memory resource requests/limits  | `{}` |
 | `api.service.type` | API Service Type | `"ClusterIP"` | 
 | `apiTokenSecret` | Key used to hash API tokens  | `""` |
+| `application.authJwtSecret` | Secret key used to sign JWTs | `""` |
 | `application.host` | Application host. Used to construct URLs to the application  | `""` |
 | `application.port` | Application port. Used to construct URLs to the application  | `"443"` |
 | `application.primaryDataStore` | Can be `es` or `postgres` | `"es"` |
