@@ -15,6 +15,7 @@ data:
   {{ end }}
   FILE_STORAGE_TYPE: {{.Values.fileStorage.type }}
   FRONTEND_URL: {{ printf "%s://%s:%s" .Values.application.urlScheme .Values.application.host .Values.application.port }}
+  GB_AUTH_JWT_SECRET: "{{.Values.application.authJwtSecret}}"
   GB_BASE_PATH: /var/gamebench/data
   GB_LICENSE_PATH: /var/gamebench/license
   {{ if .Values.googleApplicationCredentials }}

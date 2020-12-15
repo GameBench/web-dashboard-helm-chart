@@ -26,6 +26,7 @@ api:
 
 apiTokenSecret: ""
 application:
+  authJwtSecret:
   host:
   port: "443"
   urlScheme: "https"
