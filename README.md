@@ -66,7 +66,7 @@ helm install --namespace <namespace> gamebench-web-dashboard web-dashboard-helm-
 | `fileStorage.gcsPathPrefix` | Path prefix for uploaded objects. Useful if the bucket contains other objects not uploaded by the system | `""` |
 | `fileStorage.gcsProjectId` | Project ID for `fileStorage.gcsBucket` | `""` |
 | `googleApplicationCredentials` | Base64 encoded JSON service account key | `""` |
-| `image.tag` | Image tag | `v1.28.0` |
+| `image.tag` | Image tag | `v1.29.1` |
 | `ingress.annotations` | | `{}` |
 | `ingress.enabled` | | `false` |
 | `ingress.hosts` | Array of hosts | `[]` |
