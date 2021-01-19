@@ -30,12 +30,12 @@ kubectl create ns <namespace>
 # Install from Helm
 
 helm repo add gb-helm-charts https://gb-helm-charts.storage.googleapis.com/
-helm install --namespace <namespace> --version v2.0.0 gb-helm-charts/gamebench
+helm install --namespace <namespace> --version v2.1.0 gb-helm-charts/gamebench
 
 # Or clone the repo and install the chart
 
 git clone git@github.com:GameBench/web-dashboard-helm-chart.git
-helm install --namespace <namespace> --version v2.0.0 gamebench-web-dashboard web-dashboard-helm-chart
+helm install --namespace <namespace> --version v2.1.0 gamebench-web-dashboard web-dashboard-helm-chart
 ```
 
 ## Configuration
@@ -60,7 +60,7 @@ helm install --namespace <namespace> --version v2.0.0 gamebench-web-dashboard we
 | `fileStorage.gcsPathPrefix` | Path prefix for uploaded objects. Useful if the bucket contains other objects not uploaded by the system | `""` |
 | `fileStorage.gcsProjectId` | Project ID for `fileStorage.gcsBucket` | `""` |
 | `googleApplicationCredentials` | Base64 encoded JSON service account key | `""` |
-| `image.tag` | Image tag | `v2.1.0` |
+| `image.tag` | Image tag | `v2.2.0` |
 | `ingress.annotations` | | `{}` |
 | `ingress.enabled` | | `false` |
 | `ingress.hosts` | Array of hosts | `[]` |
