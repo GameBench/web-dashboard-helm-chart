@@ -39,7 +39,7 @@ fileStorage:
   type: "disk"
 googleApplicationCredentials: ""
 image:
-  tag: v2.3.0
+  tag: v2.3.1
 ingress:
   enabled: false
   hosts: []
@@ -71,6 +71,7 @@ smtp:
   port: ""
   tls: "false"
   secure: "false"
+  name: ""
 ui:
   image:
     repository: quay.io/gamebench/ang4-frontend

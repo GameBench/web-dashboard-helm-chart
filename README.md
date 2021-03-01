@@ -60,7 +60,7 @@ helm install --namespace <namespace> --version v2.2.0 gamebench-web-dashboard we
 | `fileStorage.gcsPathPrefix` | Path prefix for uploaded objects. Useful if the bucket contains other objects not uploaded by the system | `""` |
 | `fileStorage.gcsProjectId` | Project ID for `fileStorage.gcsBucket` | `""` |
 | `googleApplicationCredentials` | Base64 encoded JSON service account key | `""` |
-| `image.tag` | Image tag | `v2.3.0` |
+| `image.tag` | Image tag | `v2.3.1` |
 | `ingress.annotations` | | `{}` |
 | `ingress.enabled` | | `false` |
 | `ingress.hosts` | Array of hosts | `[]` |
@@ -81,6 +81,7 @@ helm install --namespace <namespace> --version v2.2.0 gamebench-web-dashboard we
 | `setupPassword` | `/setup` password | `""` |
 | `smtp.from` | SMTP from | `""` |
 | `smtp.host` | SMTP host | `""` |
+| `smtp.name` | Optional hostname of the client, used for identifying to the server, defaults to hostname of the machine | `""` |
 | `smtp.pass` | SMTP pass | `""` |
 | `smtp.port` | SMTP port | `""` |
 | `smtp.secure` | If `true` the connection will use TLS when connecting to server. If `false` (the default) then TLS is used if server supports the `STARTTLS` extension. In most cases set this value to `true` if you are connecting to port 465. For port 587 or 25 keep it `false` | `"false"` |
