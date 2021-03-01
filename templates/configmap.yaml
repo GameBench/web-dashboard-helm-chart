@@ -31,6 +31,7 @@ data:
   MAIL_HOST: "{{ .Values.smtp.host }}"
   MAIL_PORT: "{{.Values.smtp.port}}"
   MAIL_TLS: "{{.Values.smtp.tls}}"
+  MAIL_SECURE: "{{.Values.smtp.secure}}"
   NODE_ENV: production
   POSTGRES_DATABASE: "{{.Values.postgres.database}}"
   POSTGRES_HOST: "{{.Values.postgres.host}}"

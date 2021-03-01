@@ -69,7 +69,8 @@ smtp:
   user: ""
   pass: ""
   port: ""
-  tls: ""
+  tls: "false"
+  secure: "false"
 ui:
   image:
     repository: quay.io/gamebench/ang4-frontend
