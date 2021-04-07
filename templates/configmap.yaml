@@ -41,6 +41,8 @@ data:
   POSTGRES_PORT: "{{.Values.postgres.port}}"
   REDIS_HOST: "{{.Values.redis.host}}"
   REDIS_PORT: "{{.Values.redis.port}}"
+  GBA_AND_SDK_DOWNLOADS: "true"
+  DOWNLOADS_USE_CREDENTIALS_FROM_COMPANY: "true"
 kind: ConfigMap
 metadata:
   name: {{ template "gamebench.fullname" . }}
