@@ -30,6 +30,9 @@ application:
   host:
   port: "443"
   urlScheme: "https"
+  httpProxy:
+  httpsProxy:
+  noProxy:
 encryptionKey: ""
 fileStorage:
   cacheType: "disk"

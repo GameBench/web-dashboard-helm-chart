@@ -30,12 +30,12 @@ kubectl create ns <namespace>
 # Install from Helm
 
 helm repo add gb-helm-charts https://gb-helm-charts.storage.googleapis.com/
-helm install --namespace <namespace> --version v2.8.0 gb-helm-charts/gamebench
+helm install --namespace <namespace> --version v2.8.1 gb-helm-charts/gamebench
 
 # Or clone the repo and install the chart
 
 git clone git@github.com:GameBench/web-dashboard-helm-chart.git
-helm install --namespace <namespace> --version v2.8.0 gamebench-web-dashboard web-dashboard-helm-chart
+helm install --namespace <namespace> --version v2.8.1 gamebench-web-dashboard web-dashboard-helm-chart
 ```
 
 ## Configuration
@@ -51,6 +51,9 @@ helm install --namespace <namespace> --version v2.8.0 gamebench-web-dashboard we
 | `api.service.type` | API Service Type | `"ClusterIP"` | 
 | `apiTokenSecret` | Key used to hash API tokens  | `""` |
 | `application.host` | Application host. Used to construct URLs to the application  | `""` |
+| `application.httpProxy` | Proxy to use for HTTP requests | `""` |
+| `application.httpsProxy` | Proxy to use for HTTPS requests  | `""` |
+| `application.noProxy` | Comma separated list of hosts to opt out of proxying | `""` |
 | `application.port` | Application port. Used to construct URLs to the application  | `"443"` |
 | `application.urlScheme` | Application URL scheme. Used to construct URLs to the application  | `"https"` |
 | `encryptionKey` | Key used to hash Jira passwords / tokens  | `""` |

@@ -43,6 +43,15 @@ data:
   REDIS_PORT: "{{.Values.redis.port}}"
   GBA_AND_SDK_DOWNLOADS: "true"
   DOWNLOADS_USE_CREDENTIALS_FROM_COMPANY: "true"
+  {{ if .Values.application.httpProxy }}
+  HTTP_PROXY: "{{.Values.application.httpProxy}}"
+  {{ end }}
+  {{ if .Values.application.httpsProxy }}
+  HTTPS_PROXY: "{{.Values.application.httpsProxy}}"
+  {{ end }}
+  {{ if .Values.application.noProxy }}
+  NO_PROXY: "{{.Values.application.noProxy}}"
+  {{ end }}
 kind: ConfigMap
 metadata:
   name: {{ template "gamebench.fullname" . }}
