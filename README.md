@@ -50,6 +50,7 @@ helm install --namespace <namespace> --version v2.8.1 gamebench-web-dashboard we
 | `api.resources` | CPU/Memory resource requests/limits  | `{}` |
 | `api.service.type` | API Service Type | `"ClusterIP"` | 
 | `apiTokenSecret` | Key used to hash API tokens  | `""` |
+| `application.authJwtSecret` | Secret key used to sign JWTs | `""` |
 | `application.host` | Application host. Used to construct URLs to the application  | `""` |
 | `application.httpProxy` | Proxy to use for HTTP requests | `""` |
 | `application.httpsProxy` | Proxy to use for HTTPS requests  | `""` |
