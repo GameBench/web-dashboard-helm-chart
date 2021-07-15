@@ -75,6 +75,7 @@ smtp:
   tls: "false"
   secure: "false"
   name: ""
+  tlsRejectUnauth: ""
 ui:
   image:
     repository: quay.io/gamebench/ang4-frontend
