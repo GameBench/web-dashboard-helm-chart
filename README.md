@@ -91,7 +91,7 @@ helm install --namespace <namespace> --version v2.8.2 gamebench-web-dashboard we
 | `smtp.secure` | If `true` the connection will use TLS when connecting to server. If `false` (the default) then TLS is used if server supports the `STARTTLS` extension. In most cases set this value to `true` if you are connecting to port 465. For port 587 or 25 keep it `false` | `"false"` |
 | `smtp.tls` | if this is `true` and secure is `false` then Nodemailer tries to use STARTTLS even if the server does not advertise support for it. If the connection can not be encrypted then message is not sent | `"false"` |
 | `smtp.user` | SMTP user | `""` |
-| `smtp.tlsRejectUnauth | | `""` |
+| `smtp.tlsRejectUnauth` | | `""` |
 | `ui.image.repository` | Frontend image repository  | `quay.io/gamebench/ang4-frontend` |
 | `ui.image.pullSecrets` | Array of kubernetes pull secret names | `[]` |
 | `ui.replicas` | | `1` |
