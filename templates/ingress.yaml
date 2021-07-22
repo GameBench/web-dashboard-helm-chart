@@ -24,8 +24,7 @@ spec:
 {{- end }}
   rules:
   {{- range .Values.ingress.hosts }}
-    - host: {{ . }}
-      http:
+    - http:
         paths:
           - backend:
               serviceName: {{ $fullName }}-api
@@ -39,5 +38,8 @@ spec:
               serviceName: {{ $fullName }}-ui
               servicePort: 80
             path: /*
+      {{- if not (eq . "*") }}
+      host: {{ . }}
+      {{ end }}
   {{- end -}}
 {{- end }}
