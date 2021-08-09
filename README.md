@@ -1,3 +1,5 @@
+# For new deployments please use [v2 chart](https://github.com/GameBench/web-dashboard-helm-chart/tree/v2)
+
 # GameBench Web Dashboard Helm Chart
 
 * Installs the GameBench web dashboard which displays session data recorded using the Android app, desktop app, GBA or SDK.
