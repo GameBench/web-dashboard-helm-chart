@@ -29,15 +29,15 @@ spec:
           - backend:
               serviceName: {{ $fullName }}-api
               servicePort: 5000
-            path: /v1/*
+            path: /v1/{{ if $.Values.ingress.appendAsteriskToPath }}*{{ end }}
           - backend:
               serviceName: {{ $fullName }}-api
               servicePort: 5000
-            path: /socket.io/*
+            path: /socket.io/{{ if $.Values.ingress.appendAsteriskToPath }}*{{ end }}
           - backend:
               serviceName: {{ $fullName }}-ui
               servicePort: 80
-            path: /*
+            path: /{{ if $.Values.ingress.appendAsteriskToPath }}*{{ end }}
       {{- if not (eq . "*") }}
       host: {{ . }}
       {{ end }}

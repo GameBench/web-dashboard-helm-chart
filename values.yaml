@@ -46,6 +46,7 @@ image:
 ingress:
   enabled: false
   hosts: []
+  appendAsteriskToPath: true
 license:
   contents: ""
   signature: ""
