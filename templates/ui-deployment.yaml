@@ -45,5 +45,5 @@ spec:
           protocol: TCP
         {{ if .Values.ui.resources }}
         resources:
-          {{ toYaml .Values.ui.resources | indent 10 }}
+{{ toYaml .Values.ui.resources | indent 12 }}
         {{ end }}
