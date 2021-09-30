@@ -38,7 +38,7 @@ spec:
         - secretRef:
             name: {{ template "gamebench.fullname" . }}
         command: ["node"]
-        args: ["dist/queue-cli.js"]
+        args: ["--unhandled-rejections=strict", "dist/queue-cli.js"]
         image: "{{ .Values.api.image.repository }}:{{ .Values.image.tag }}"
         name: worker
         {{ if .Values.worker.resources }}
