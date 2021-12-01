@@ -9,7 +9,7 @@ data:
   FILE_STORAGE_DISK_BASE_PATH: /var/gamebench/data/storage
   {{ if eq .Values.fileStorage.type "gcs" }}
   FILE_STORAGE_CACHE_TYPE: {{.Values.fileStorage.cacheType}}
-  FILE_STORAGE_GCS_BUCKET: {{.Values.fileStorage.gcsBucket}}
+  FILE_STORAGE_GCS_BUCKET: "{{.Values.fileStorage.gcsBucket}}"
   FILE_STORAGE_GCS_PATH_PREFIX: "{{.Values.fileStorage.gcsPathPrefix}}"
   FILE_STORAGE_GCS_PROJECT_ID: {{.Values.fileStorage.gcsProjectId}}
   {{ end }}
