@@ -53,6 +53,8 @@ data:
   {{ if .Values.application.noProxy }}
   NO_PROXY: "{{.Values.application.noProxy}}"
   {{ end }}
+  GB_LOGIN_RATE_LIMIT_ENABLED: "{{.Values.application.loginRateLimitEnabled}}"
+  GB_PASSWORD_BLACKLIST_ENABLED: "{{.Values.application.passwordBlacklistEnabled}}"
 kind: ConfigMap
 metadata:
   name: {{ template "gamebench.fullname" . }}

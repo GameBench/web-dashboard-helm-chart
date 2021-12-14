@@ -32,7 +32,9 @@ application:
   urlScheme: "https"
   httpProxy:
   httpsProxy:
+  loginRateLimitEnabled: "false"
   noProxy:
+  passwordBlacklistEnabled: "false"
 encryptionKey: ""
 fileStorage:
   cacheType: "disk"
