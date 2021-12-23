@@ -41,7 +41,7 @@ spec:
         image: "{{.Values.ui.image.repository}}:{{.Values.image.tag}}"
         name: nginx
         ports:
-        - containerPort: 80
+        - containerPort: 8080
           protocol: TCP
         {{ if .Values.ui.resources }}
         resources:
