@@ -1,4 +1,4 @@
 apiVersion: "v1"
 name: "gamebench"
-version: "2.11.4"
-appVersion: "2.11.3"
+version: "2.11.5"
+appVersion: "2.11.4"
