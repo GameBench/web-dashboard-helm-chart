@@ -21,8 +21,8 @@ spec:
         app: {{ template "gamebench.name" . }}
         release: "{{ .Release.Name }}"
         component: ui
-      annotations:
       {{- with .Values.ui.podAnnotations }}
+      annotations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
     spec:
