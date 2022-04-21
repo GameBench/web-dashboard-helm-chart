@@ -22,6 +22,9 @@ spec:
         release: "{{ .Release.Name }}"
         component: api
       annotations:
+      {{- with .Values.api.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
         checksum/secrets: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
     spec:
