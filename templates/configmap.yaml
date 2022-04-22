@@ -55,6 +55,15 @@ data:
   {{ end }}
   GB_LOGIN_RATE_LIMIT_ENABLED: "{{.Values.application.loginRateLimitEnabled}}"
   GB_PASSWORD_BLACKLIST_ENABLED: "{{.Values.application.passwordBlacklistEnabled}}"
+  {{ if .Values.application.skipStorageInitialisation }}
+  SKIP_STORAGE_INITIALISATION: "{{.Values.application.skipStorageInitialisation}}"
+  {{ end }}
+  {{ if .Values.postgres.readOnly }}
+  POSTGRES_READONLY: "{{.Values.postgres.readOnly}}"
+  {{ end }}
+  {{ if .Values.fileStorage.gcsForceBucket }}
+  FILE_STORAGE_GCS_FORCE_BUCKET: "{{.Values.fileStorage.gcsForceBucket}}"
+  {{ end }}
 kind: ConfigMap
 metadata:
   name: {{ template "gamebench.fullname" . }}
