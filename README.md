@@ -54,6 +54,7 @@ helm install --namespace <namespace> --version 0.32 gamebench-web-dashboard web-
 | `api.image.repository` | API image repository  | `quay.io/gamebench/node-backend` |
 | `api.image.pullSecrets` | Array of kubernetes pull secret names | `[]` |
 | `api.livenessProbe` | API liveness probe  | `{"httpGet":{"path":"/v1/health","port":5000},"initialDelaySeconds":60,"periodSeconds":30}` |
+| `api.podAnnotations`| API Pod annotations | `""` |
 | `api.readinessProbe` | API readiness probe  | `{"httpGet":{"path":"/v1/info/version","port":5000},"initialDelaySeconds":60,"periodSeconds":30}` |
 | `api.replicas` | | `1` |
 | `api.resources` | CPU/Memory resource requests/limits  | `{}` |
@@ -103,9 +104,11 @@ helm install --namespace <namespace> --version 0.32 gamebench-web-dashboard web-
 | `smtp.user` | SMTP user | `""` |
 | `ui.image.repository` | Frontend image repository  | `quay.io/gamebench/ang4-frontend` |
 | `ui.image.pullSecrets` | Array of kubernetes pull secret names | `[]` |
+| `ui.podAnnotations`| UI Pod annotations | `""` |
 | `ui.replicas` | | `1` |
 | `ui.resources` | CPU/Memory resource requests/limits  | `{}` |
 | `ui.service.type` | UI Service Type | `"ClusterIP"` |
+| `worker.podAnnotations`| API Pod annotations | `""` |
 | `worker.replicas` | | `1` |
 | `worker.resources` | CPU/Memory resource requests/limits  | `{}` |
 
