@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
   ALLOW_FREE_USER_SIGNUP: "false"
-  BACKEND_URL: {{ printf "%s://%s:%s" .Values.application.urlScheme .Values.application.host .Values.application.port }}
+  BACKEND_URL: {{ print .Values.application.urlScheme "://" .Values.application.host ":" .Values.application.port }}
   {{ if .Values.application.dbLogLevel }}
   DB_LOG_LEVEL: "{{.Values.application.dbLogLevel}}"
   {{ end }}
@@ -14,7 +14,7 @@ data:
   FILE_STORAGE_GCS_PROJECT_ID: {{.Values.fileStorage.gcsProjectId}}
   {{ end }}
   FILE_STORAGE_TYPE: {{.Values.fileStorage.type }}
-  FRONTEND_URL: {{ printf "%s://%s:%s" .Values.application.urlScheme .Values.application.host .Values.application.port }}
+  FRONTEND_URL: {{ print .Values.application.urlScheme "://" .Values.application.host ":" .Values.application.port }}
   GB_AUTH_JWT_SECRET: "{{.Values.application.authJwtSecret}}"
   GB_BASE_PATH: /var/gamebench/data
   GB_LICENSE_PATH: /var/gamebench/license
