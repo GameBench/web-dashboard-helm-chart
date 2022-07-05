@@ -46,7 +46,7 @@ fileStorage:
   type: "disk"
 googleApplicationCredentials: ""
 image:
-  tag: v2.13.0
+  tag: v2.13.1
 ingress:
   enabled: false
   hosts: []
