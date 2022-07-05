@@ -1,4 +1,6 @@
 api:
+  podAnnotations: {}
+  #  cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
   image:
     repository: quay.io/gamebench/node-backend
     pullSecrets: []
@@ -80,6 +82,8 @@ smtp:
   name: ""
   tlsRejectUnauth: ""
 ui:
+  podAnnotations: {}
+  #  cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
   image:
     repository: quay.io/gamebench/ang4-frontend
     pullSecrets: []
@@ -94,6 +98,8 @@ ui:
     type: ClusterIP
 
 worker:
+  podAnnotations: {}
+  #  cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
   replicas: 1
   resources: {}
   #  requests:
