@@ -32,18 +32,21 @@ spec:
                 port:
                   number: 5000
             path: /v1/{{ if $.Values.ingress.appendAsteriskToPath }}*{{ end }}
+            pathType: Prefix
           - backend:
               service:
                 name: {{ $fullName }}-api
                 port:
                   number: 5000
             path: /socket.io/{{ if $.Values.ingress.appendAsteriskToPath }}*{{ end }}
+            pathType: Prefix
           - backend:
               service:
                 name: {{ $fullName }}-ui
                 port:
                   number: 80
             path: /{{ if $.Values.ingress.appendAsteriskToPath }}*{{ end }}
+            pathType: Prefix
       {{- if not (eq . "*") }}
       host: {{ . }}
       {{ end }}
