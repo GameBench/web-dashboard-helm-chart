@@ -64,6 +64,7 @@ data:
   {{ if .Values.fileStorage.gcsForceBucket }}
   FILE_STORAGE_GCS_FORCE_BUCKET: "{{.Values.fileStorage.gcsForceBucket}}"
   {{ end }}
+  GB_AUTH_LEGACY_LOGIN: "{{.Values.application.legacyLogin}}"
 kind: ConfigMap
 metadata:
   name: {{ template "gamebench.fullname" . }}
