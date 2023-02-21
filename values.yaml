@@ -25,6 +25,8 @@ api:
   #    memory: 1Gi
   service:
     type: ClusterIP
+    annotations: {}
+      # cloud.google.com/backend-config: '{"default": "api-backendconfig"}'
 
 apiTokenSecret: ""
 application:
@@ -97,6 +99,8 @@ ui:
   #    memory: 512Mi
   service:
     type: ClusterIP
+    annotations: {}
+      # cloud.google.com/backend-config: '{"default": "ui-backendconfig"}'
 
 worker:
   podAnnotations: {}
