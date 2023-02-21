@@ -30,12 +30,12 @@ kubectl create ns <namespace>
 # Install from Helm
 
 helm repo add gb-helm-charts https://gb-helm-charts.storage.googleapis.com/
-helm install --namespace <namespace> --version v2.18.3 gb-helm-charts/gamebench
+helm install --namespace <namespace> --version v2.18.4 gb-helm-charts/gamebench
 
 # Or clone the repo and install the chart
 
 git clone git@github.com:GameBench/web-dashboard-helm-chart.git
-helm install --namespace <namespace> --version v2.18.3 gamebench-web-dashboard web-dashboard-helm-chart
+helm install --namespace <namespace> --version v2.18.4 gamebench-web-dashboard web-dashboard-helm-chart
 ```
 
 ## Configuration
