@@ -35,7 +35,7 @@ helm install --namespace <namespace> --version v2.22.0 gb-helm-charts/gamebench
 # Or clone the repo and install the chart
 
 git clone git@github.com:GameBench/web-dashboard-helm-chart.git
-helm install --namespace <namespace> --version v2.22.2 gamebench-web-dashboard web-dashboard-helm-chart
+helm install --namespace <namespace> --version v2.22.0 gamebench-web-dashboard web-dashboard-helm-chart
 ```
 
 ## Configuration
