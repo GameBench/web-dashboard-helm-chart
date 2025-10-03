@@ -2,6 +2,9 @@
 
 - Installs the GameBench web dashboard which displays session data recorded using the Android app, desktop app, GBA or SDK.
 
+> [!IMPORTANT]
+> v2.31.0 requires Postgres 17
+
 ## TL;DR;
 
 ```
