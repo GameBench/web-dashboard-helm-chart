@@ -1,0 +1,69 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ template "gamebench.fullname" . }}-refresh-stats
+  namespace: {{.Release.Namespace}}
+  labels:
+    app: {{ template "gamebench.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  schedule: "*/3 * * * *"
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 5
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: {{ template "gamebench.name" . }}
+            release: "{{ .Release.Name }}"
+            component: refresh-stats
+        spec:
+          {{- if .Values.api.image.pullSecrets }}
+          imagePullSecrets:
+          {{- range $sec := .Values.api.image.pullSecrets }}
+            - name: {{$sec | quote }}
+          {{- end }}
+          {{- end }}
+          restartPolicy: OnFailure
+          containers:
+          - name: refresh-stats
+            image: "{{ .Values.api.image.repository }}:{{ .Values.image.tag }}"
+            command: ["bin/cli"]
+            args: ["refresh-stats"]
+            envFrom:
+            - configMapRef:
+                name: {{ template "gamebench.fullname" . }}
+            - secretRef:
+                name: {{ template "gamebench.fullname" . }}
+            volumeMounts:
+            - mountPath: /var/gamebench/license
+              name: license-volume
+              readOnly: true
+            - mountPath: /var/gamebench/data
+              name: data-volume
+            {{ if .Values.googleApplicationCredentials }}
+            - mountPath: /var/secrets/google
+              name: google-application-credentials-volume
+              readOnly: true
+            {{ end }}
+          volumes:
+          - name: license-volume
+            secret:
+              secretName: {{ template "gamebench.fullname" . }}-license
+          {{ if .Values.persistence.enabled }}
+          - name: data-volume
+            persistentVolumeClaim:
+              claimName: {{ .Values.persistence.existingClaim | default (include "gamebench.fullname" .) }}
+          {{ else }}
+          - name: data-volume
+            emptyDir: {}
+          {{ end }}
+          {{ if .Values.googleApplicationCredentials }}
+          - name: google-application-credentials-volume
+            secret:
+              secretName: {{ template "gamebench.fullname" . }}-google-application-credentials-secret
+          {{ end }}
