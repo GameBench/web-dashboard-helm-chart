@@ -65,6 +65,10 @@ data:
   FILE_STORAGE_GCS_FORCE_BUCKET: "{{.Values.fileStorage.gcsForceBucket}}"
   {{ end }}
   GB_AUTH_LEGACY_LOGIN: "{{.Values.application.legacyLogin}}"
+  GB_FEEDBACK_ENABLED: "{{.Values.feedback.enabled}}"
+  {{ if .Values.feedback.webhookUrl }}
+  GB_FEEDBACK_WEBHOOK_URL: "{{.Values.feedback.webhookUrl}}"
+  {{ end }}
 kind: ConfigMap
 metadata:
   name: {{ template "gamebench.fullname" . }}

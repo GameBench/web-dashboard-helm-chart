@@ -41,6 +41,10 @@ application:
   passwordBlacklistEnabled: "false"
   legacyLogin: "false"
 encryptionKey: ""
+feedback:
+  enabled: "false"
+  webhookUrl: ""
+  webhookAuthHeader: ""
 fileStorage:
   cacheType: "disk"
   gcsBucket: ""
