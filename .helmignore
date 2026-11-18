@@ -1,0 +1,12 @@
+.git
+custom-values.yaml
+gb-helm-charts
+license.base64
+license.json
+pv.yaml
+sync-repo.sh
+*.swp
+custom-values/
+test_file.zip
+query
+.claude/
