@@ -1,3 +1,4 @@
+anthropicApiKey: ""
 api:
   podAnnotations: {}
   #  cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
